@@ -34,14 +34,7 @@ function playRound(playerSelection, computerSelection){
     } else {
         return
     }
-
-    if (win === true) {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else if (win === false) {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
-    } else {
-        return " It's a Tie!";
-    }
+    return win;
 }
 
 function game() {
@@ -49,16 +42,25 @@ function game() {
         const options = ["rock", "paper", "scissors"];
         let playerSelection;
         computerSelection = computerPlay();
-        while (true) {
+        let notValid = true;
+        while (notValid) {
             let playerSelection = prompt("Please type in your play: ");
             playerSelection = playerSelection.toLowerCase();
             if (options.indexOf(playerSelection) == -1){
                 alert("Not a valid option. Please try again..");
             } else {
-                return 
+                notValid = false;
             }
         }
-        playRound(playerSelection, computerSelection)
+        playerWon = playRound(playerSelection, computerSelection);
+
+        if (playerWon === true) {
+            return `You Win! ${playerSelection} beats ${computerSelection}`;
+        } else if (playerWon === false) {
+            return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        } else {
+            return " It's a Tie!";
+        }
     
     }
 }
