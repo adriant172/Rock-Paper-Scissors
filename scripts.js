@@ -1,5 +1,4 @@
 function computerPlay() {
-    const options = ["rock", "paper", "scissors"];
     let currentPick = options[Math.floor(Math.random() * options.length)];
     return currentPick;
 }
@@ -33,6 +32,8 @@ function playRound(playerSelection, computerSelection){
         } else {
             win = "Tie";
         }
+    } else {
+        return
     }
 
     if (win === true) {
@@ -43,3 +44,18 @@ function playRound(playerSelection, computerSelection){
         return " It's a Tie!";
     }
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        const options = ["rock", "paper", "scissors"];
+        playerSelection = prompt("")
+        playRound(playerSelection, computerSelection)
+
+    }
+}
+
+
+
+// const playerSelection = "rock";
+// const computerSelection = computerPlay();
+// console.log(playRound(playerSelection, computerSelection));
