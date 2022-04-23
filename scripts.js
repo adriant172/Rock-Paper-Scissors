@@ -1,8 +1,7 @@
-function computerPlay() {
+function computerPlay(options) {
     let currentPick = options[Math.floor(Math.random() * options.length)];
     return currentPick;
 }
-
 
 function playRound(playerSelection, computerSelection){
     let win;
@@ -47,10 +46,10 @@ function resultResponse (playerWon){
 }
 
 function game() {
+    const options = ["rock", "paper", "scissors"];
     for (let i = 0; i < 5; i++) {
-        const options = ["rock", "paper", "scissors"];
         let playerSelection;
-        computerSelection = computerPlay();
+        computerSelection = computerPlay(options);
         let notValid = true;
         while (notValid) {
             let playerSelection = prompt("Please type in your play: ");
