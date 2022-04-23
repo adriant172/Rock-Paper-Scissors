@@ -47,9 +47,19 @@ function playRound(playerSelection, computerSelection){
 function game() {
     for (let i = 0; i < 5; i++) {
         const options = ["rock", "paper", "scissors"];
-        playerSelection = prompt("Please type in your play: ")
+        let playerSelection;
+        computerSelection = computerPlay();
+        while (true) {
+            let playerSelection = prompt("Please type in your play: ");
+            playerSelection = playerSelection.toLowerCase();
+            if (options.indexOf(playerSelection) == -1){
+                alert("Not a valid option. Please try again..");
+            } else {
+                return 
+            }
+        }
         playRound(playerSelection, computerSelection)
-
+    
     }
 }
 
