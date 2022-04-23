@@ -3,7 +3,6 @@ function computerPlay() {
     return currentPick;
 }
 
-console.log(computerPlay());
 
 function playRound(playerSelection, computerSelection){
     let win;
@@ -63,17 +62,11 @@ function game() {
             }
         }
         playerWon = playRound(playerSelection, computerSelection);
-
-        if (playerWon === true) {
-            return `You Win! ${playerSelection} beats ${computerSelection}`;
-        } else if (playerWon === false) {
-            return `You Lose! ${computerSelection} beats ${playerSelection}`;
-        } else {
-            return " It's a Tie!";
-        }
-    
+        console.log(resultResponse(playerWon));
     }
 }
+
+
 
 
 
