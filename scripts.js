@@ -6,7 +6,6 @@ function computerPlay() {
 console.log(computerPlay());
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
     let win;
     if (playerSelection === "rock") {
         if (computerSelection === "paper") {
@@ -48,7 +47,7 @@ function playRound(playerSelection, computerSelection){
 function game() {
     for (let i = 0; i < 5; i++) {
         const options = ["rock", "paper", "scissors"];
-        playerSelection = prompt("")
+        playerSelection = prompt("Please type in your play: ")
         playRound(playerSelection, computerSelection)
 
     }
