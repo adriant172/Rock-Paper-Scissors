@@ -36,6 +36,16 @@ function playRound(playerSelection, computerSelection){
     }
     return win;
 }
+ 
+function resultResponse (playerWon){
+    if (playerWon === true) {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerWon === false) {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    } else {
+        return " It's a Tie!";
+    }
+}
 
 function game() {
     for (let i = 0; i < 5; i++) {
