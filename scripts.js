@@ -1,4 +1,5 @@
 function computerPlay(options) {
+    // pick rock paper or scissors and  return a variable 
     let currentPick = options[Math.floor(Math.random() * options.length)];
     return currentPick;
 }
@@ -29,13 +30,12 @@ function playRound(playerSelection, computerSelection){
         } else {
             win = "Tie";
         }
-    } else {
-        return
     }
+    console.log("this is the result: " + win)
     return win;
 }
  
-function resultResponse (playerWon){
+function resultResponse (playerWon, playerSelection, computerSelection){
     if (playerWon === true) {
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     } else if (playerWon === false) {
@@ -48,12 +48,13 @@ function resultResponse (playerWon){
 function game() {
     const options = ["rock", "paper", "scissors"];
     for (let i = 0; i < 5; i++) {
-        let playerSelection;
         computerSelection = computerPlay(options);
+        let playerSelection;
         let notValid = true;
         while (notValid) {
-            let playerSelection = prompt("Please type in your play: ");
+            playerSelection = prompt("Please type in your play: ");
             playerSelection = playerSelection.toLowerCase();
+            console.log(playerSelection);
             if (options.indexOf(playerSelection) == -1){
                 alert("Not a valid option. Please try again..");
             } else {
@@ -61,14 +62,7 @@ function game() {
             }
         }
         playerWon = playRound(playerSelection, computerSelection);
-        console.log(resultResponse(playerWon));
+        console.log(playerWon)
+        console.log(resultResponse(playerWon, playerSelection, computerSelection));
     }
 }
-
-
-
-
-
-// const playerSelection = "rock";
-// const computerSelection = computerPlay();
-// console.log(playRound(playerSelection, computerSelection));
