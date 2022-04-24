@@ -32,7 +32,6 @@ function playRound(playerSelection, computerSelection){
             win = "Tie";
         }
     }
-    console.log("this is the result: " + win)
     return win;
 }
  
@@ -60,7 +59,6 @@ function game() {
         while (notValid) {
             playerSelection = prompt("Please enter rock, paper or scissors: ");
             playerSelection = playerSelection.toLowerCase();
-            console.log(playerSelection);
             if (options.indexOf(playerSelection) == -1){
                 alert("Not a valid option. Please try again..");
             } else {
@@ -73,12 +71,13 @@ function game() {
         }else if (playerWon === false) {
             computerWins++;
         }
-        console.log(playerWon)
         console.log(resultResponse(playerWon, playerSelection, computerSelection));
     }
     if (playerWins > computerWins) {
         console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
     } else if(playerWins < computerWins) {
         console.log(`You lost ${computerWins} out of 5 rounds . You Lose!`);
+    } else {
+        console.log("Looks likes its tie! Thanks for playing.")
     }
 }
