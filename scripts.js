@@ -68,9 +68,6 @@ function game() {
             playerWins++;
         }else if (playerWon === false) {
             computerWins++;
-        }else {
-            playerWins++;
-            computerWins++;
         }
         console.log(playerWon)
         console.log(resultResponse(playerWon, playerSelection, computerSelection));
