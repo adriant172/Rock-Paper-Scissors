@@ -5,6 +5,7 @@ function computerPlay(options) {
 }
 
 function playRound(playerSelection, computerSelection){
+    // Compare the player and computer selections. Use the the rules of rock-paper-scissors to return a boolean result indicating wheter the player has won or lost.
     let win;
     if (playerSelection === "rock") {
         if (computerSelection === "paper") {
@@ -35,7 +36,8 @@ function playRound(playerSelection, computerSelection){
     return win;
 }
  
-function resultResponse (playerWon, playerSelection, computerSelection){
+function resultResponse (playerWon, playerSelection, computerSelection) {
+    // Returns a message indicating the result of a game round using the boolean provided from the playRound function
     if (playerWon === true) {
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     } else if (playerWon === false) {
@@ -46,6 +48,7 @@ function resultResponse (playerWon, playerSelection, computerSelection){
 }
 
 function game() {
+    // Run the playRound function 5 times
     const options = ["rock", "paper", "scissors"];
     let playerWins = 0;
     let computerWins = 0;
@@ -53,8 +56,9 @@ function game() {
         computerSelection = computerPlay(options);
         let playerSelection;
         let notValid = true;
+        // Continue to prompt the user for an input until they provide the correct input
         while (notValid) {
-            playerSelection = prompt("Please type in your play: ");
+            playerSelection = prompt("Please enter rock, paper or scissors: ");
             playerSelection = playerSelection.toLowerCase();
             console.log(playerSelection);
             if (options.indexOf(playerSelection) == -1){
