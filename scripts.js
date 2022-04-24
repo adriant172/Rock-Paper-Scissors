@@ -47,6 +47,8 @@ function resultResponse (playerWon, playerSelection, computerSelection){
 
 function game() {
     const options = ["rock", "paper", "scissors"];
+    let playerWins = 0;
+    let computerWins = 0;
     for (let i = 0; i < 5; i++) {
         computerSelection = computerPlay(options);
         let playerSelection;
@@ -62,7 +64,20 @@ function game() {
             }
         }
         playerWon = playRound(playerSelection, computerSelection);
+        if (playerWon === true) {
+            playerWins++;
+        }else if (playerWon === false) {
+            computerWins++;
+        }else {
+            playerWins++;
+            computerWins++;
+        }
         console.log(playerWon)
         console.log(resultResponse(playerWon, playerSelection, computerSelection));
+    }
+    if (playerWins > computerWins) {
+        console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
+    } else if(playerWins < computerWins) {
+        console.log(`You lost ${computerWins} out of 5 rounds . You Lose!`);
     }
 }
