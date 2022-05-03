@@ -48,47 +48,39 @@ function resultResponse (playerWon, playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    // Run the playRound function 5 times
-    let playerWins = 0;
-    let computerWins = 0;
-    computerSelection = computerPlay(options);
-    let playerSelection;
-    let notValid = true;
-    // Continue to prompt the user for an input until they provide the correct input
-    while (notValid) {
-        playerSelection = prompt("Please enter rock, paper or scissors: ");
-        playerSelection = playerSelection.toLowerCase();
-        if (options.indexOf(playerSelection) == -1){
-            alert("Not a valid option. Please try again..");
-        } else {
-            notValid = false;
-        }
-    }
-    playerWon = playRound(playerSelection, computerSelection);
-    if (playerWon === true) {
-        playerWins++;
-    }else if (playerWon === false) {
-        computerWins++;
-    }
-    console.log(resultResponse(playerWon, playerSelection, computerSelection));
-    if (playerWins > computerWins) {
-        console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
-    } else if(playerWins < computerWins) {
-        console.log(`You lost ${computerWins} out of 5 rounds . You Lose!`);
-    } else {
-        console.log("Looks likes its tie! Thanks for playing.")
-    }
-}
+
+    // playerWon = playRound(playerSelection, computerSelection);
+    
+    // console.log(resultResponse(playerWon, playerSelection, computerSelection));
+    // if (playerWins > computerWins) {
+    //     console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
+    // } else if(playerWins < computerWins) {
+    //     console.log(`You lost ${computerWins} out of 5 rounds . You Lose!`);
+    // } else {
+    //     console.log("Looks likes its tie! Thanks for playing.")
+    // }
+
+
+let playerWins = 0;
+let computerWins = 0;
+
 
 const buttons = document.querySelectorAll('button');
+let playerScore = document.querySelector('#player>p')
+let computerScore = document.querySelector('#computer>p')
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        playRound(button.textContent, computerPlay());
+        let playerWon = playRound(button.textContent, computerPlay());
+        if (playerWon === true) {
+            playerWins++;
+            playerScore.textContent = playerWins;
+        }else if (playerWon === false) {
+            computerWins++;
+            computerScore.textContent = computerWins;
+        }
     });
     console.log(button);
 })
 
 
-game();
