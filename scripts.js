@@ -34,7 +34,8 @@ function playRound(playerSelection, computerSelection){
             win = "Tie";
         }
     }
-    return win;
+    result = resultResponse(win, playerSelection, computerSelection)
+    return {"win": win, "computerPick": computerSelection, "playerPick": playerSelection, "resultResponse": result};
 }
  
 function resultResponse (playerWon, playerSelection, computerSelection) {
@@ -47,11 +48,7 @@ function resultResponse (playerWon, playerSelection, computerSelection) {
         return " It's a Tie!";
     }
 }
-
-
-    // playerWon = playRound(playerSelection, computerSelection);
     
-    // console.log(resultResponse(playerWon, playerSelection, computerSelection));
     // if (playerWins > computerWins) {
     //     console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
     // } else if(playerWins < computerWins) {
@@ -66,19 +63,22 @@ let computerWins = 0;
 
 
 const buttons = document.querySelectorAll('button');
-let playerScore = document.querySelector('#player>p')
-let computerScore = document.querySelector('#computer>p')
+let playerScore = document.querySelector('#player>p');
+let computerScore = document.querySelector('#computer>p');
+let displayResult = document.querySelector('#round-result');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        let playerWon = playRound(button.textContent, computerPlay());
-        if (playerWon === true) {
+        let roundResults = playRound(button.textContent, computerPlay());
+        if (roundResults.win === true) {
             playerWins++;
             playerScore.textContent = playerWins;
-        }else if (playerWon === false) {
+        }else if (roundResults.win === false) {
             computerWins++;
             computerScore.textContent = computerWins;
         }
+        displayResult.textContent = roundResults.resultResponse;
+
     });
     console.log(button);
 })
