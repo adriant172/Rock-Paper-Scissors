@@ -51,28 +51,26 @@ function game() {
     const options = ["rock", "paper", "scissors"];
     let playerWins = 0;
     let computerWins = 0;
-    for (let i = 0; i < 5; i++) {
-        computerSelection = computerPlay(options);
-        let playerSelection;
-        let notValid = true;
-        // Continue to prompt the user for an input until they provide the correct input
-        while (notValid) {
-            playerSelection = prompt("Please enter rock, paper or scissors: ");
-            playerSelection = playerSelection.toLowerCase();
-            if (options.indexOf(playerSelection) == -1){
-                alert("Not a valid option. Please try again..");
-            } else {
-                notValid = false;
-            }
+    computerSelection = computerPlay(options);
+    let playerSelection;
+    let notValid = true;
+    // Continue to prompt the user for an input until they provide the correct input
+    while (notValid) {
+        playerSelection = prompt("Please enter rock, paper or scissors: ");
+        playerSelection = playerSelection.toLowerCase();
+        if (options.indexOf(playerSelection) == -1){
+            alert("Not a valid option. Please try again..");
+        } else {
+            notValid = false;
         }
-        playerWon = playRound(playerSelection, computerSelection);
-        if (playerWon === true) {
-            playerWins++;
-        }else if (playerWon === false) {
-            computerWins++;
-        }
-        console.log(resultResponse(playerWon, playerSelection, computerSelection));
     }
+    playerWon = playRound(playerSelection, computerSelection);
+    if (playerWon === true) {
+        playerWins++;
+    }else if (playerWon === false) {
+        computerWins++;
+    }
+    console.log(resultResponse(playerWon, playerSelection, computerSelection));
     if (playerWins > computerWins) {
         console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
     } else if(playerWins < computerWins) {
