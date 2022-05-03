@@ -1,5 +1,6 @@
-function computerPlay(options) {
-    // pick rock paper or scissors and  return a variable 
+function computerPlay() {
+    // pick rock paper or scissors and  return a variable
+    const options = ["rock", "paper", "scissors"];
     let currentPick = options[Math.floor(Math.random() * options.length)];
     return currentPick;
 }
@@ -7,6 +8,7 @@ function computerPlay(options) {
 function playRound(playerSelection, computerSelection){
     // Compare the player and computer selections. Use the the rules of rock-paper-scissors to return a boolean result indicating wheter the player has won or lost.
     let win;
+    playerSelection = playerSelection.toLowerCase();
     if (playerSelection === "rock") {
         if (computerSelection === "paper") {
             win = false;
@@ -48,7 +50,6 @@ function resultResponse (playerWon, playerSelection, computerSelection) {
 
 function game() {
     // Run the playRound function 5 times
-    const options = ["rock", "paper", "scissors"];
     let playerWins = 0;
     let computerWins = 0;
     computerSelection = computerPlay(options);
@@ -83,7 +84,10 @@ function game() {
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
-    button.addEventListener('click', playRound(button.textContent, ))
+    button.addEventListener('click', () => {
+        playRound(button.textContent, computerPlay());
+    });
+    console.log(button);
 })
 
 
