@@ -5,6 +5,7 @@ body {
     background-color: lightskyblue;
     align-items: center;
     gap: 25px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 .header {
     display: flex;
@@ -23,7 +24,9 @@ button {
     height: 50px;
     width: 125px;
     background-color: crimson;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: fantasy;
+    font-weight: 900;
+    font-size: larger;
 }
 #roundResult {
     display: flex;
