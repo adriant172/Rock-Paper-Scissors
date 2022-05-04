@@ -104,8 +104,10 @@ buttons.forEach((button) => {
             const endMessage = document.createElement('div');
             endMessage.classList.add('endMessage')
             const restartbtn = document.createElement('button');
-            restartbtn.onclick ="window.location.reload(true)";
-            restartbtn.textContent = "Play Again?"
+            restartbtn.textContent = "Play Again?";
+            restartbtn.addEventListener('click', () => {
+                location.reload();
+            }, false);
             if (playerWins > computerWins) {
                 endMessage.textContent = ` You won ${playerWins} out of 5 rounds. You win the game!`;
             } else if(playerWins < computerWins) {
@@ -114,7 +116,7 @@ buttons.forEach((button) => {
                 endMessage.textContent = "Looks likes its tie! Thanks for playing.";
             }
             body.appendChild(endMessage);
-            body.appendChild()
+            body.appendChild(restartbtn);
         
         }
         displayResult.textContent = roundResults.resultResponse;

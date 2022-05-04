@@ -20,7 +20,7 @@ button {
     margin: 8px;
     border-radius: 4px;
 }
-#round-result {
+#roundResult {
     display: flex;
     justify-content: center;
     align-items: center;
