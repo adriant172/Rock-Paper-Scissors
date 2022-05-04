@@ -45,7 +45,7 @@ function resultResponse (playerWon, playerSelection, computerSelection) {
     } else if (playerWon === false) {
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
     } else {
-        return " It's a Tie!";
+        return " It's a Tie! Try Again!!";
     }
 }
     
@@ -63,6 +63,8 @@ let computerWins = 0;
 
 
 const buttons = document.querySelectorAll('button');
+let player = document.querySelector('#player');
+let computer = document.querySelector('#computer');
 let playerScore = document.querySelector('#player>p');
 let computerScore = document.querySelector('#computer>p');
 let displayResult = document.querySelector('#round-result');
@@ -70,6 +72,32 @@ let displayResult = document.querySelector('#round-result');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let roundResults = playRound(button.textContent, computerPlay());
+        let playerPickImg = document.createElement('img');
+        let computerPickImg = document.createElement('img');
+        let currentImgs = document.querySelectorAll('.pickImg');
+        currentImgs.forEach( img => {
+            img.remove();
+        })
+        // Create pick image element corresponding with the players pick
+        if (roundResults.playerPick === "rock") {
+            playerPickImg.src = "images/rock-left.png";
+        } else if (roundResults.playerPick === "paper") {
+            playerPickImg.src = "images/paper-left.png";
+        } else {
+            playerPickImg.src = "images/Scissors-Left.png";
+        }
+        // Create pick image element corresponding with the computers pick
+        if (roundResults.computerPick === "rock") {
+            computerPickImg.src = "images/rock-right.png";
+        } else if (roundResults.computerPick === "paper") {
+            computerPickImg.src = "images/paper-right.png";
+        } else {
+            computerPickImg.src = "images/Scissors-right.png";
+        }
+        playerPickImg.classList.add('pickImg');
+        computerPickImg.classList.add('pickImg');
+        player.prepend(playerPickImg);
+        computer.prepend(computerPickImg);
         if (roundResults.win === true) {
             playerWins++;
             playerScore.textContent = playerWins;
