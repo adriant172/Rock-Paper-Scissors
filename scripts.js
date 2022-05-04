@@ -125,8 +125,6 @@ buttons.forEach((button) => {
         
         }
         displayResult.textContent = roundResults.resultResponse;
-
-
     });
 })
 
