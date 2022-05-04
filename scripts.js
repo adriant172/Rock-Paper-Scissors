@@ -98,9 +98,14 @@ buttons.forEach((button) => {
             computerScore.textContent = computerWins;
         }
         if (computerWins === 5 || playerWins === 5){
-            const roundInfo = document.querySelector('.roundInfo');
-            roundInfo.remove();
+            // Clear all elements 
             const body = document.querySelector('body');
+            let child = body.lastElementChild;
+            while (child){
+                body.removeChild(child);
+                child = body.lastElementChild;
+            }
+            // Create Retry button and end game message
             const endMessage = document.createElement('div');
             endMessage.classList.add('endMessage')
             const restartbtn = document.createElement('button');
@@ -123,7 +128,6 @@ buttons.forEach((button) => {
 
 
     });
-    console.log(button);
 })
 
 
