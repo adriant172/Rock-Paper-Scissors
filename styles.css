@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    background-color: lightskyblue;
+
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.options {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+button {
+    margin: 8px;
+    border-radius: 4px;
+}
+#round-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: 900;
+}
+ul {
+    margin-top: 50px;
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+p {
+    text-align: center;
+}
