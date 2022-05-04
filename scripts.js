@@ -48,14 +48,6 @@ function resultResponse (playerWon, playerSelection, computerSelection) {
         return " It's a Tie! Try Again!!";
     }
 }
-    
-    // if (playerWins > computerWins) {
-    //     console.log(` You won ${playerWins} out of 5 rounds. You win the game!`);
-    // } else if(playerWins < computerWins) {
-    //     console.log(`You lost ${computerWins} out of 5 rounds . You Lose!`);
-    // } else {
-    //     console.log("Looks likes its tie! Thanks for playing.")
-    // }
 
 
 let playerWins = 0;
@@ -67,7 +59,7 @@ let player = document.querySelector('#player');
 let computer = document.querySelector('#computer');
 let playerScore = document.querySelector('#player>p');
 let computerScore = document.querySelector('#computer>p');
-let displayResult = document.querySelector('#round-result');
+let displayResult = document.querySelector('#roundResult');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -105,7 +97,28 @@ buttons.forEach((button) => {
             computerWins++;
             computerScore.textContent = computerWins;
         }
+        if (computerWins === 5 || playerWins === 5){
+            const roundInfo = document.querySelector('.roundInfo');
+            roundInfo.remove();
+            const body = document.querySelector('body');
+            const endMessage = document.createElement('div');
+            endMessage.classList.add('endMessage')
+            const restartbtn = document.createElement('button');
+            restartbtn.onclick ="window.location.reload(true)";
+            restartbtn.textContent = "Play Again?"
+            if (playerWins > computerWins) {
+                endMessage.textContent = ` You won ${playerWins} out of 5 rounds. You win the game!`;
+            } else if(playerWins < computerWins) {
+                endMessage.textContent = `You lost ${computerWins} out of 5 rounds . You Lose!`;
+            } else {
+                endMessage.textContent = "Looks likes its tie! Thanks for playing.";
+            }
+            body.appendChild(endMessage);
+            body.appendChild()
+        
+        }
         displayResult.textContent = roundResults.resultResponse;
+
 
     });
     console.log(button);
